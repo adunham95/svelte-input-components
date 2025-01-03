@@ -1,20 +1,29 @@
-<!-- @migration-task Error while migrating Svelte code: $$props is used together with named props in a way that cannot be automatically migrated. -->
 <script lang="ts">
-	export let label: string;
-	export let id: string;
-	export let type: 'legend' | 'label' = 'label';
-	export let showLabel = false;
+	export interface LabelProps {
+		class?: string;
+		label: string;
+		id: string;
+		type?: 'legend' | 'label';
+		hideLabel?: boolean;
+	}
+	let {
+		class: className = '',
+		label,
+		id,
+		type = 'label',
+		hideLabel = false
+	}: LabelProps = $props();
 </script>
 
 {#if type === 'label'}
 	<label
 		for={id}
-		class={`block text-sm font-medium leading-6 text-gray-700 ${showLabel ? '' : 'sr-only'} ${$$props.class}`}
+		class={`block text-sm font-medium leading-6 text-gray-700 ${hideLabel ? 'sr-only' : ''} ${className}`}
 		>{label}</label
 	>
 {:else if type === 'legend'}
 	<legend
-		class={`block text-sm font-medium leading-6 text-gray-700 ${showLabel ? '' : 'sr-only'} ${$$props.class}`}
+		class={`block text-sm font-medium leading-6 text-gray-700 ${hideLabel ? 'sr-only' : ''} ${className}`}
 		>{label}</legend
 	>
 {/if}

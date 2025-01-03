@@ -1,18 +1,15 @@
 <script lang="ts">
-	import Label from '$lib/Components/Label.svelte';
+	import Label, { type LabelProps } from '$lib/Components/Label.svelte';
 
-	interface Props {
-		label: string;
-		id: string;
+	interface Props extends LabelProps {
 		groupName: string;
-		showLabel?: boolean;
 		options?: { id: string; title: string; checked?: boolean }[];
 	}
 
-	let { label, id, groupName, showLabel = false, options = [] }: Props = $props();
+	let { label, id, groupName, hideLabel = true, options = [] }: Props = $props();
 </script>
 
-<Label {id} {label} {showLabel} />
+<Label {id} {label} {hideLabel} />
 <div class="flex justify-start">
 	{#each options as option}
 		<label

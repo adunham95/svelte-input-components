@@ -1,11 +1,15 @@
-<script>
+<script lang="ts">
 	import Select from '$lib/Components/Select.svelte';
 	import TextInput from '$lib/Components/TextInput.svelte';
-	/** @type {{ [key: string]: any }} */
-	let { ...props } = $props();
+
+	interface AddressProps {
+		class: string;
+	}
+
+	let { class: className = '' }: AddressProps = $props();
 </script>
 
-<div class={`grid grid-cols-3 gap-2 ${props.class}`}>
+<div class={`grid grid-cols-3 gap-2 ${className}`}>
 	<TextInput id="location-name" label="Address Name" class="col-span-3" />
 	<TextInput id="street" label="Street" class="col-span-3" />
 	<TextInput id="street2" label="Street 2" class="col-span-3" />
