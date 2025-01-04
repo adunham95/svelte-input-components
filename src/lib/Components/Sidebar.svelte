@@ -9,28 +9,25 @@
 		}
 	}
 
-	$inspect(expanded);
-
 	const links = [
-		{ name: 'Dashboard', href: '/' },
+		{ name: 'Install', href: '/' },
 		{
-			name: 'Teams',
-			id: 'teams',
+			name: 'Components',
+			id: 'components',
 			links: [
-				{ name: 'Engineering', href: '/engineering' },
-				{ name: 'Human Resources', href: '/hr' }
+				{ name: 'Address', href: '/components/address' },
+				{ name: 'Checklist', href: '/components/checklist' },
+				{ name: 'Colorlist', href: '/components/colorlist' },
+				{ name: 'DateInput', href: '/components/dateinput' },
+				{ name: 'Label', href: '/components/label' },
+				{ name: 'RadioBox', href: '/components/radiobox' },
+				{ name: 'RadioList', href: '/components/radioboxlist' },
+				{ name: 'Select', href: '/components/select' },
+				{ name: 'TextArea', href: '/components/textarea' },
+				{ name: 'TextInput', href: '/components/textinput' },
+				{ name: 'Toggle', href: '/components/toggle' }
 			]
-		},
-		{ name: 'Contacts', href: '/contacts' },
-		{
-			name: 'Projects',
-			id: 'projects',
-			links: [
-				{ name: 'GraphQL API', href: '/graph-api' },
-				{ name: 'iOS App', href: '/ios' }
-			]
-		},
-		{ name: 'Calender', href: '/calender' }
+		}
 	];
 </script>
 

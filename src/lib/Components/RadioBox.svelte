@@ -1,14 +1,17 @@
 <!-- @migration-task Error while migrating Svelte code: $$props is used together with named props in a way that cannot be automatically migrated. -->
 <script lang="ts">
-	import Label from '$lib/Components/Label.svelte';
-	export let label: string | undefined = undefined;
-	export let id: string;
-	export let groupName: string;
-	export let options: { id: string; title: string; value?: string; checked?: boolean }[] = [];
-	// console.log(options);
+	import Label, { type LabelProps } from '$lib/Components/Label.svelte';
+
+	interface RadioBoxProps extends LabelProps {
+		groupName: string;
+		class?: string;
+		options: { id: string; title: string; value?: string; checked?: boolean }[];
+	}
+
+	const { label, id, groupName, options = [], class: className = '' }: RadioBoxProps = $props();
 </script>
 
-<fieldset class={$$props.class}>
+<fieldset class={className}>
 	{#if label}
 		<Label {label} {id} />
 	{/if}

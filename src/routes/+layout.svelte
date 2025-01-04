@@ -8,8 +8,6 @@
 	function toggleNav() {
 		mobileNavOpen = !mobileNavOpen;
 	}
-
-	$inspect(mobileNavOpen);
 </script>
 
 <div>

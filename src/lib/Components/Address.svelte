@@ -3,7 +3,7 @@
 	import TextInput from '$lib/Components/TextInput.svelte';
 
 	interface AddressProps {
-		class: string;
+		class?: string;
 	}
 
 	let { class: className = '' }: AddressProps = $props();

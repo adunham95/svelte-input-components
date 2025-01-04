@@ -3,25 +3,25 @@
 
 	interface Props extends LabelProps {
 		groupName: string;
-		options?: { id: string; title: string; checked?: boolean }[];
+		colors?: { hex: string; name?: string; checked?: boolean }[];
 	}
 
-	let { label, id, groupName, hideLabel = true, options = [] }: Props = $props();
+	let { label, id, groupName, hideLabel = false, colors = [] }: Props = $props();
 </script>
 
 <Label {id} {label} {hideLabel} />
 <div class="flex justify-start">
-	{#each options as option}
+	{#each colors as color}
 		<label
-			aria-label={option.title}
-			style={`color: ${option.id}`}
+			aria-label={color.name || color.hex}
+			style={`color: ${color.hex}`}
 			class="relative -m-0.5 mb-1 mr-1 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
 		>
 			<input
 				type="radio"
 				name={groupName}
-				value={option.id}
-				checked={option.checked}
+				value={color.hex}
+				checked={color.checked}
 				class="peer sr-only"
 			/>
 			<span

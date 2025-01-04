@@ -1,14 +1,19 @@
 <script lang="ts">
-	export let name: string | undefined = undefined;
-	export let options: {
-		id: string;
-		title: string;
-		checked?: boolean | undefined;
-		subtitle?: string | undefined | null;
-	}[] = [];
+	interface ChecklistProps {
+		options: {
+			id: string;
+			title: string;
+			checked?: boolean | undefined;
+			subtitle?: string | undefined | null;
+		}[];
+		name?: string;
+		class?: string;
+	}
+
+	const { options, name, class: className = '' }: ChecklistProps = $props();
 </script>
 
-<div class={`space-y-5 ${$$props.class}`}>
+<div class={`space-y-5 ${className}`}>
 	{#each options as option}
 		<div class="relative flex items-start">
 			<div class="flex h-6 items-center">
