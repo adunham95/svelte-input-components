@@ -1,29 +1,37 @@
 <script lang="ts">
-	import Label from '$lib/Components/Label.svelte';
+	import Label, { type LabelProps } from '$lib/Components/Label.svelte';
 
-	export let label: string;
-	export let id: string;
-	export let placeholder: string = '';
-	export let value: any = '';
-	export let name: string | undefined = undefined;
-	export let error: string | undefined = undefined;
+	interface DateInputProps extends LabelProps {
+		placeholder?: string;
+		value?: string;
+		name?: string;
+		error?: string;
+		required?: boolean;
+	}
 
-	export let required = false;
-
-	export let inputRef = null;
+	let {
+		class: className,
+		label,
+		id,
+		placeholder,
+		required = false,
+		name,
+		value = $bindable(),
+		error,
+		hideLabel
+	}: DateInputProps = $props();
 </script>
 
-<div class={$$props.class}>
-	<Label {label} {id} />
+<div class={className}>
+	<Label {label} {id} {hideLabel} />
 	<input
 		type="date"
-		class="text-theme-content placeholder:text-theme-secondary-content focus:ring-theme-brand block w-full rounded-md border-0 bg-gray-500 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+		class="text-theme-content placeholder:text-theme-secondary-content focus:ring-theme-brand block w-full rounded-md border-0 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
 		{id}
 		{placeholder}
 		{required}
 		name={name || id}
 		bind:value
-		bind:this={inputRef}
 	/>
 	{#if error}
 		<p class="mt-2 text-sm text-red-600">{error}</p>
