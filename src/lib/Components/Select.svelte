@@ -1,21 +1,30 @@
 <!-- @migration-task Error while migrating Svelte code: $$props is used together with named props in a way that cannot be automatically migrated. -->
 <script lang="ts">
-	import Label from '$lib/Components/Label.svelte';
+	import Label, { type LabelProps } from '$lib/Components/Label.svelte';
 
-	export let label: string | undefined = undefined;
-	export let id: string;
-	export let value: any = '';
-	export let name: string | undefined = undefined;
-	export let options: { id: string; label?: string; selected?: boolean }[] = [];
-	export let showLabel = true;
+	interface SelectProps extends LabelProps {
+		class?: string;
+		name?: string;
+		value?: string;
+		options: { id: string; label?: string; selected?: boolean }[];
+		hideLabel?: boolean;
+		required?: boolean;
+	}
 
-	export let required = false;
+	let {
+		class: className,
+		label,
+		id,
+		hideLabel,
+		required,
+		name,
+		value = $bindable(),
+		options
+	}: SelectProps = $props();
 </script>
 
-<div class={$$props.class}>
-	{#if label}
-		<Label {label} {id} {showLabel} />
-	{/if}
+<div class={className}>
+	<Label {label} {id} {hideLabel} />
 	<select
 		{required}
 		name={name || id}
