@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { generateID } from '$lib/generateID.js';
-	import TextInput from '$lib/Components/TextInput.svelte';
+	import TextInput, { type TextInputTypes } from '$lib/Components/TextInput.svelte';
 
 	interface Props {
-		inputType?: string;
+		inputType?: TextInputTypes;
 		placeholder?: string;
 		groupName: string;
 	}
