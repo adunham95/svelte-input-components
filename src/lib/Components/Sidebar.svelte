@@ -11,7 +11,7 @@
 	}
 
 	const links = [
-		{ name: 'Install', href: '/install' },
+		{ name: 'Install', href: '/' },
 		{
 			name: 'Components',
 			id: 'components',
