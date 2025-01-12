@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	let expanded = $state('');
 
 	function toggleExpanded(name: string) {
@@ -36,7 +37,7 @@
 		{#if link.href}
 			<li>
 				<a
-					href={link.href}
+					href={`${base}${link.href}`}
 					class="block rounded-md py-2 pl-10 pr-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50"
 				>
 					{link.name}
@@ -75,7 +76,7 @@
 							{#each link.links as sublink}
 								<li>
 									<a
-										href={sublink.href}
+										href={`${base}${sublink.href}`}
 										class="block rounded-md py-2 pl-9 pr-2 text-sm/6 text-gray-700 hover:bg-gray-50"
 									>
 										{sublink.name}
