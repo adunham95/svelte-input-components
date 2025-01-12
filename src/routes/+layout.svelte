@@ -1,6 +1,8 @@
 <script lang="ts">
 	import '../app.css';
 	import Sidebar from '$lib/Components/Sidebar.svelte';
+	import { version } from '$app/environment';
+
 	let { children } = $props();
 
 	let mobileNavOpen = $state(false);
@@ -42,7 +44,10 @@
 				<!-- Sidebar component, swap this element with another sidebar if you like -->
 				<div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
 					<div class="flex h-16 shrink-0 items-center">
-						<p>Svelte Input Components</p>
+						<div>
+							<p>Svelte Input Components</p>
+							<p class="pt-1 text-xs">Version {version}</p>
+						</div>
 					</div>
 					<nav class="flex flex-1 flex-col">
 						<Sidebar></Sidebar>
@@ -57,7 +62,10 @@
 		<!-- Sidebar component, swap this element with another sidebar if you like -->
 		<div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
 			<div class="flex h-16 shrink-0 items-center">
-				<p>Svelte Input Components</p>
+				<div>
+					<p>Svelte Input Components</p>
+					<p class="pt-1 text-xs">Version {version}</p>
+				</div>
 			</div>
 			<nav class="flex flex-1 flex-col">
 				<Sidebar></Sidebar>
@@ -68,7 +76,11 @@
 	<div
 		class="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden"
 	>
-		<button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" onclick={toggleNav}>
+		<button
+			type="button"
+			class="-m-2.5 cursor-pointer p-2.5 text-gray-700 lg:hidden"
+			onclick={toggleNav}
+		>
 			<span class="sr-only">Open sidebar</span>
 			<svg
 				class="size-6"
