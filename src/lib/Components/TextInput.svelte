@@ -16,7 +16,7 @@
 		class?: string;
 		placeholder?: string;
 		type?: TextInputTypes;
-		value?: string;
+		value?: string | null;
 		error?: string;
 		disabled?: boolean;
 		required?: boolean;

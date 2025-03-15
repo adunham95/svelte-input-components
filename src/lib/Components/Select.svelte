@@ -5,7 +5,7 @@
 	interface SelectProps extends LabelProps {
 		class?: string;
 		name?: string;
-		value?: string;
+		value?: string | null;
 		options: { id: string; label?: string; selected?: boolean }[];
 		hideLabel?: boolean;
 		required?: boolean;

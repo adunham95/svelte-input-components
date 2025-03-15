@@ -5,7 +5,7 @@
 	interface TextAreaProps extends LabelProps {
 		class?: string;
 		placeholder?: string;
-		value?: string;
+		value?: string | null;
 		name?: string;
 		cols?: number;
 		inputClass?: string;
